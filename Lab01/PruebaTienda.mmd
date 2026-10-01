@@ -1,0 +1,76 @@
+classDiagram
+direction LR
+
+%% Productos
+class Producto {
+  +int IdProducto
+  +string Nombre
+  +string Descripcion
+  +float Precio
+  +bool Activo
+  +int Stock
+}
+
+%% Categorias
+class Categoria {
+  +int IdCategoria
+  +string Nombre
+  +string Descripcion
+  +bool Activo
+}
+
+%% Usuarios
+class Usuario {
+  +int IdUsuario
+  +string Nombre
+  +string Correo
+  +string PasswordHash
+  +string Rol
+  +bool Activo
+}
+
+%% Direcciones
+class Direccion {
+  +int IdDireccion
+  +string Provincia
+  +string Canton
+  +string SenasExactas
+}
+
+%% Pedidos
+class Pedido {
+  +int IdPedido
+  +date Fecha
+  +float Total
+  +string Estado
+}
+
+%% DetallePedido
+class DetallePedido {
+  +int IdDetallePedido
+  +int Cantidad
+  +float PrecioUnitario
+}
+
+%% Carrito de Compras
+class Carrito {
+  +int IdCarrito
+}
+
+%% ItemCarrito
+class ItemCarrito {
+  +int IdItemCarrito
+  +int Cantidad
+}
+
+%% Relaciones
+Producto "0..*" --> "1" Categoria : pertenece_a
+Usuario "1" --> "0..*" Direccion : tiene
+Pedido "1" --> "1" Direccion : enviado_a
+Pedido "1" --> "0..*" DetallePedido : contiene
+Producto "1" --> "0..*" DetallePedido : incluido_en
+Usuario "1" --> "0..*" Pedido : realiza
+
+Usuario "1" --> "0..1" Carrito : posee
+Carrito "1" --> "0..*" ItemCarrito : contiene
+Producto "1" --> "0..*" ItemCarrito : agregado_a
