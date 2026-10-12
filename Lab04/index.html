@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LAB-04</title>
-    <link rel="stylesheet" href="estilos.css">
+  <title>Plataforma Educativa - Registro</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
 
-  <!-- encabezado de cuerpo de la pagina-->
-  <header>
+  <!-- Encabezado de la página -->
+  <header class="main-header">
     <h1>Plataforma Educativa Universidad Central</h1>
   </header>
 
-  <!-- menu -->
+  <!-- Menú de navegación -->
   <nav id="menu">
     <ul>
       <li class="item"><a href="final/">Inicio</a></li>
@@ -25,89 +25,110 @@
     </ul>
   </nav>
 
-  <main>
-    <section>
+  <main class="main-container">
+    <!-- Sección del Formulario -->
+    <section class="form-section">
       <form action="#" method="post">
-        <fieldset>
+        <fieldset class="main-fieldset">
           <legend>Registro de Usuario</legend>
 
-          <div class="form-group">
-            <label for="username">Nombre de Usuario:</label>
-            <input class="form-input" type="text" id="username" name="username" required>
+          <!-- Datos de acceso -->
+          <div class="inputs-container">
+            <div class="form-group">
+              <label for="username">Nombre de Usuario:</label>
+              <input class="form-input" type="text" id="username" name="username" required>
+            </div>
 
-            <label for="email">Correo Electrónico:</label>
-            <input class="form-input" type="email" id="email" name="email" required>
+            <div class="form-group">
+              <label for="email">Correo Electrónico:</label>
+              <input class="form-input" type="email" id="email" name="email" required>
+            </div>
 
-            <label for="password">Contraseña:</label>
-            <input class="form-input" type="password" id="password" name="password" required>
+            <div class="form-group">
+              <label for="password">Contraseña:</label>
+              <input class="form-input" type="password" id="password" name="password" required>
+            </div>
           </div>
 
-
+          <!-- Opciones divididas (Género e Intereses) -->
           <div class="flex-container">
-            <fieldset>
-              <legend>Genero</legend>
-              <div>
-                <div>
+            <fieldset class="sub-fieldset">
+              <legend>Género</legend>
+              <div class="options-list">
+                <div class="option-item">
                   <input type="radio" value="m" name="genero" id="g-m">
                   <label for="g-m">Masculino</label>
                 </div>
-                <div>
+                <div class="option-item">
                   <input type="radio" value="f" name="genero" id="g-f">
                   <label for="g-f">Femenino</label>
                 </div>
-                <div>
+                <div class="option-item">
                   <input type="radio" value="o" name="genero" id="g-o">
                   <label for="g-o">Otro</label>
                 </div>
-                <div>
+                <div class="option-item">
                   <input type="radio" value="n" name="genero" id="g-n">
                   <label for="g-n">Prefiero no decirlo</label>
                 </div>
               </div>
             </fieldset>
 
-            <fieldset>
+            <fieldset class="sub-fieldset">
               <legend>Seleccione sus intereses:</legend>
-              <div>
-                <div>
+              <div class="options-list">
+                <div class="option-item">
                   <input type="checkbox" name="intereses" id="interes1" value="programacion">
                   <label for="interes1">Programación</label>
                 </div>
-                <div>
+                <div class="option-item">
                   <input type="checkbox" name="intereses" id="interes2" value="diseño">
                   <label for="interes2">Diseño Gráfico</label>
                 </div>
-                <div>
+                <div class="option-item">
                   <input type="checkbox" name="intereses" id="interes3" value="marketing">
                   <label for="interes3">Marketing Digital</label>
                 </div>
-                <div>
+                <div class="option-item">
                   <input type="checkbox" name="intereses" id="interes4" value="ciencia">
                   <label for="interes4">Ciencia de Datos</label>
                 </div>
+              </div>
             </fieldset>
           </div>
+
           <div class="form-actions">
-            <button type="submit" >Registrar</button>
+            <button type="submit" class="btn-submit">Registrar</button>
           </div>
         </fieldset>
       </form>
     </section>
+
+    <!-- Sección de Videos -->
     <section id="video-section">
-      <iframe src="https://www.youtube.com/embed/LXb3EKWsInQ?si=KRC7kR0cZzGenVSb&amp;start=61" title="Video Incrustado"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/LXb3EKWsInQ?si=KRC7kR0cZzGenVSb&amp;start=61" title="Video Incrustado"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <h2>Contenido Multimedia</h2>
+      <div class="video-grid">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/LXb3EKWsInQ?si=KRC7kR0cZzGenVSb&amp;start=61" title="Video Incrustado 1"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/rFVpSwgCkCo?si=Nzf8Cr9adYzJaFZ6" title="YouTube video player 2" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
     </section>
   </main>
+
+  <!-- Pie de página -->
   <footer>
-    <p>&copy; 2023 Plataforma Educativa Universidad Central</p>
-    <p>Contacto: <a href="mailto:fabian.chinchilla@uc.ac.cr">Fabian</p>
+    <p>&copy; 2026 Plataforma Educativa Universidad Central</p>
+    <p>Contacto: <a href="mailto:fabian.chinchilla@uc.ac.cr">Fabian Chinchilla</a></p>
   </footer>
+
 </body>
 
 </html>
