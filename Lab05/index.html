@@ -6,34 +6,40 @@
     <title>DEY Online Store</title>
     <!-- Bootstrap CSS (v5.3.8) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-    <!-- Iconos de Bootstrap (opcional para un toque más profesional) -->
+    <!-- Iconos de Bootstrap  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Tus estilos propios -->
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-    <!-- 1. BARRA DE NAVEGACIÓN -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dey">
-        <div class="container">
-            <!-- Si tienes la imagen guardada en tu carpeta como logo.jpeg puedes usar la etiqueta img -->
-            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
-                <span class="brand-text-dey">DEY</span> <span class="fs-6 font-monospace">Online Store</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#registro">Registro</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+   <!-- BARRA DE NAVEGACIÓN CON LOGO -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dey">
+    <div class="container">
+        <!-- Logo + Nombre de la Tienda -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+            <!-- Ajusta la altura (height) según se vea mejor -->
+            <img src="logo.jpeg" alt="DEY Online Store Logo" height="45" class="rounded-circle shadow-sm">
+            <span class="brand-text-dey fw-bold">DEY</span>
+            <span class="fs-6 font-monospace d-none d-sm-inline">Online Store</span>
+        </a>
 
-    <!-- SECCIÓN DE BIENVENIDA (HERO) -->
+        <!-- Botón de Hamburguesa para pantallas pequeñas -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menú que se oculta/despliega -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#registro">Registro</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <!-- SECCIÓN DE BIENVENIDA -->
     <header class="bg-light text-center py-5 border-bottom">
         <div class="container py-3">
             <h1 class="display-4 fw-bold text-dey-blue">¡Bienvenidos a DEY Online Store!</h1>
@@ -45,7 +51,7 @@
 
     <main class="container my-5">
 
-        <!-- 2. REQUISITO 1 DEL LAB: Prueba de Grid (div.row > div.col.border*4) -->
+        <!-- 2. Prueba de Grid (div.row > div.col.border*4) -->
         <section id="grid-prueba" class="mb-5">
             <h3 class="fw-bold mb-3 text-dey-blue">1. Pruebas de Grid (Categorías)</h3>
             <p class="text-secondary">Prueba con la regla <code>div.row &gt; div.col.border*4</code>:</p>
@@ -95,7 +101,7 @@
             </div>
         </section>
 
-        <!-- 3. REQUISITO 2 Y 3 DEL LAB: Formulario referente al Proyecto DEY -->
+        <!-- 3. Reciclar el Formulario para el Proyecto DEY -->
         <section id="registro" class="card shadow-sm border-0">
             <div class="card-header bg-dey text-white py-3">
                 <h4 class="card-title mb-0 fw-bold">Registro de Cliente - DEY Online Store</h4>
