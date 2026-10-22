@@ -1,0 +1,169 @@
+
+    /* Estilos generales de la página */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f6;
+      color: #333;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #ffffff;
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+    }
+
+    h2 {
+      border-bottom: 2px solid #007acc;
+      padding-bottom: 10px;
+      margin-top: 0;
+      color: #007acc;
+    }
+
+    .demo-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* Solo Sombras*/
+
+    /* Sombra de texto */
+    .texto-sombra {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #0b4075;
+      /* Eje X, Eje Y, Desenfoque, Color */
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Sombra de caja básica (Externa) */
+    .caja-sombra-externa {
+      width: 120px;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 8px;
+      text-align: center;
+      /* Eje X, Eje Y, Desenfoque, Propagación, Color */
+      box-shadow: 0px 8px 16px rgba(11, 119, 143, 0.15);
+    }
+
+    /* Sombra de caja interior (Inset) */
+    .caja-sombra-interior {
+      width: 120px;
+      padding: 20px;
+      background: #eef2f5;
+      border-radius: 8px;
+      text-align: center;
+      /* inset = Sombra hacia adentro */
+      box-shadow: inset 0px 4px 8px rgba(87, 8, 8, 0.2);
+    }
+
+    /* Solo Transiciones  */
+
+    .base-transicion {
+      width: 180px;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Transición de Color de Fondo (ease) */
+    .transicion-color {
+      background-color: #e74c3c;
+      /* Propiedad, Duración, Función de tiempo */
+      transition: background-color 0.4s ease;
+    }
+    .transicion-color:hover {
+      background-color: #2ecc71;
+    }
+
+    /* Transición de Escala / Tamaño (ease-out) */
+    .transicion-escala {
+      background-color: #9b59b6;
+      /* Propiedad, Duración, Función de tiempo */
+      transition: transform 0.3s ease-out;
+    }
+    .transicion-escala:hover {
+      transform: scale(1.1);
+    }
+
+    /* Combinando Sombras y Transiciones)
+       
+    /* Tarjeta Interactiva de Producto / Contenido */
+    .tarjeta-interactiva {
+      width: 250px;
+      padding: 25px;
+      background: #ffffff;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      
+      /* Estado inicial: Sombra suave e inclinación plana */
+      box-shadow: 0 2px 55px rgba(8, 181, 74, 0.1);
+      transform: translateY();
+
+      /* TRANSICIÓN: Anima los cambios de sombra y elevación */
+      transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Estado Hover: La tarjeta "vuela" y proyecta mayor sombra */
+    .tarjeta-interactiva:hover {
+      background-color: #ffffff;
+      transform: translateY(-8px); /* Eleva la tarjeta */
+      box-shadow: 0 12px 24px rgba(62, 51, 51, 0.2); /* Sombra más profunda */
+    }
+
+    .tarjeta-interactiva h3 {
+      margin-top: 0;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .tarjeta-interactiva:hover h3 {
+      color: #007acc; /* Cambia de color el texto al pasar el cursor */
+    }
+
+    /* Botón flotante 3D moderno */
+    .boton-3d {
+      padding: 15px 30px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      
+      /* Sombra que le da cuerpo al botón */
+      box-shadow: 0 4px 10px rgba(0, 122, 204, 0.4);
+      
+      /* Transición suave */
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .boton-3d:hover {
+      background-color: #005999;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 122, 204, 0.6);
+    }
+
+    .boton-3d:active {
+      /* Simula el "clic" real bajando el botón */
+      transform: translateY(1px);
+      box-shadow: 0 2px 5px rgba(0, 122, 204, 0.4);
+    }

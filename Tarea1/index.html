@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarea de Sombras y Transiciones en CSS</title>
+  <link rel="stylesheet" href="tarea1.css">
+
+</head>
+<body>
+
+  <h1>Demostración de Sombras y Transiciones</h1>
+
+  <!-- SECCIÓN 1: SOLO SOMBRAS -->
+  <section>
+    <h2>Parte 1: Solo Sombras</h2>
+    <p>Efectos estáticos utilizando text-shadow y box-shadow para generar profundidad.</p>
+    
+    <div class="demo-container">
+      <div>
+        <p class="texto-sombra">Texto solo con Sombra</p>
+      </div>
+      <div class="caja-sombra-externa">
+        <p>Sombra Externa</p>
+      </div>
+      <div class="caja-sombra-interior">
+        <p>Sombra Interna (Inset)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: SOLO TRANSICIONES -->
+  <section>
+    <h2>Parte 2: Solo Transiciones</h2>
+    <p>Al pasar el cursor por las cajas se ven cambios progresivos de estilo sin sombras.</p>
+    
+    <div class="demo-container">
+      <div class="base-transicion transicion-color">
+        Cambio de Color<br>(ease)
+      </div>
+      <div class="base-transicion transicion-escala">
+        Aumento de Tamaño<br>(ease-out)
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: COMBINADO -->
+  <section>
+    <h2>Parte 3: Sombras + Transiciones (Combinado)</h2>
+    <p>Efecto de elevación al pasar por encima de los elementos.</p>
+    
+    <div class="demo-container" style="align-items: center;">
+      <div class="tarjeta-interactiva">
+        <h3>Tarjeta Interactiva</h3>
+        <p>Al pasar el cursor, la tarjeta sube (<code>translateY</code>) y la sombra crece simultáneamente.</p>
+      </div>
+
+      <div>
+        <button class="boton-3d">¡Haz Clic Aquí!</button>
+      </div>
+      
+    </div>
+  </section>
+
+</body>
+</html>
