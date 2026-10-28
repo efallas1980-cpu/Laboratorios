@@ -19,6 +19,7 @@ const txtNombre = document.getElementById("txtNombre");
 const txtApellido = document.getElementById("txtApellido");
 const txtCorreo = document.getElementById("txtCorreo");
 const txtCarrera = document.getElementById("txtCarrera");
+const txtFechaNac = document.getElementById("txtFechaNac");
 
 // Tabla
 const tbody = document.getElementById("tbodyStudents");
@@ -147,7 +148,7 @@ const guardarEstudiante = async () => {
     correo: txtCorreo.value.trim(),
     carrera: txtCarrera.value.trim(),
   };
-
+//Validación de campos vacíos
   if (!estudiante.nombre || !estudiante.apellido || !estudiante.correo || !estudiante.carrera) {
     Swal.fire("Por favor, complete todos los campos");
     return;

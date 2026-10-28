@@ -1,0 +1,45 @@
+/* Colores personalizados basados en el Logo de DEY Online Store */
+:root {
+    --dey-pink: #ff66c4;
+    --dey-pink-hover: #e04eb2;
+    --dey-blue: #12086e;
+}
+
+/* Color para el Navbar */
+.bg-dey {
+    background-color: var(--dey-blue) !important;
+}
+
+/* Colores de texto */
+.text-dey-blue {
+    color: var(--dey-blue);
+}
+
+.brand-text-dey {
+    color: var(--dey-pink);
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+}
+
+/* Botón Rosa */
+.btn-dey-pink {
+    background-color: var(--dey-pink);
+    color: white;
+    border: none;
+}
+
+.btn-dey-pink:hover {
+    background-color: var(--dey-pink-hover);
+    color: white;
+}
+
+/* Botón delineado */
+.btn-outline-dey-pink {
+    color: var(--dey-pink);
+    border-color: var(--dey-pink);
+}
+
+.btn-outline-dey-pink:hover {
+    background-color: var(--dey-pink);
+    color: white;
+}
