@@ -61,8 +61,8 @@ tbody.addEventListener("click", async (event) => {
 
   const id = target.getAttribute("data-id");
 
-  // 1. Consultar el estudiante por su id
-  const { data, error } = await supabase.from("estudiantes").select("id,nombre,apellido,correo,carrera").eq("id", id).single();
+  // 1. Consultar el estudiante por su id (incluyendo fechaNac)
+  const { data, error } = await supabase.from("estudiantes").select("id,nombre,apellido,correo,carrera,fechaNac").eq("id", id).single();
 
   if (error) {
     console.error(error);
@@ -76,38 +76,23 @@ tbody.addEventListener("click", async (event) => {
   txtApellido.value = data.apellido;
   txtCorreo.value = data.correo;
   txtCarrera.value = data.carrera;
+  txtFechaNac.value = data.fechaNac ?? "";
   // 3. Cambiar el botón de agregar a actualizar
   btnAdd.textContent = "Actualizar";
   tituloForm.textContent = "Editar Estudiante";
 });
-
-/*
-// funcion de flecha
-// const consultarEstudiantes = async () => {};
-// funcion tradicional
-// function consultarEstudiantes() {}
-
-// let y const
-// let x = 10;
-// x = 20;
-// const y = 30;
-// y = 40; // error, no se puede reasignar una constante
-// var z = 50;
-// var z = 60; // no error, var permite redeclarar la misma variable
-*/
 
 //****************************************
 //Funciones
 //****************************************
 const consultarEstudiantes = async () => {
   // usamos el cliente de Supabase para hacer una consulta a la tabla "estudiantes"
-  // json: { "data": [], "error": null }
   const search = txtSearch.value.trim() || ""; // si el valor es vacío, se asigna una cadena vacía
-  const query = supabase.from("estudiantes").select("id,nombre,apellido,correo,carrera");
+  // Agregamos fechaNac a la consulta de selección
+  const query = supabase.from("estudiantes").select("id,nombre,apellido,correo,carrera,fechaNac");
 
   // filtros
   if (search.length > 0) {
-    // query.ilike("nombre", `%${search}%`);
     query.or(`nombre.ilike.%${search}%,apellido.ilike.%${search}%`);
   }
   const { data, error } = await query;
@@ -125,12 +110,15 @@ const consultarEstudiantes = async () => {
   data.forEach((r) => {
     const tr = document.createElement("tr"); //<tr></tr>
     tr.setAttribute("data-id", r.id);
-    //<td>${r.id ?? ""}</td>
+    
+    // El orden de las columnas debe coincidir exactamente con el <thead> del HTML:
+    // 1: Nombre, 2: Apellido, 3: Correo, 4: Carrera, 5: Fecha Nacimiento, 6: Acciones
     tr.innerHTML = `
         <td>${r.nombre ?? ""}</td>
         <td>${r.apellido ?? ""}</td>
         <td>${r.correo ?? ""}</td>
         <td>${r.carrera ?? ""}</td>
+        <td>${r.fechaNac ?? ""}</td>
         <td>
           <button class="btnEditar" data-id="${r.id}">Editar</button>
           <button class="btnEliminar" data-id="${r.id}">Eliminar</button>
@@ -147,10 +135,11 @@ const guardarEstudiante = async () => {
     apellido: txtApellido.value.trim(),
     correo: txtCorreo.value.trim(),
     carrera: txtCarrera.value.trim(),
+    fechaNac: txtFechaNac.value ? txtFechaNac.value : null, // Incluimos fechaNac
   };
-//Validación de campos vacíos
+//Validación de campos vacíos (puedes ajustar si fechaNac es opcional)
   if (!estudiante.nombre || !estudiante.apellido || !estudiante.correo || !estudiante.carrera) {
-    Swal.fire("Por favor, complete todos los campos");
+    Swal.fire("Por favor, complete todos los campos obligatorios");
     return;
   }
 
@@ -199,13 +188,7 @@ const limpiarFormulario = () => {
   txtApellido.value = "";
   txtCorreo.value = "";
   txtCarrera.value = "";
+  txtFechaNac.value = ""; // Limpiamos también el campo de fecha
   btnAdd.textContent = "Agregar";
   tituloForm.textContent = "Agregar Estudiantes";
 };
-
-/*
-Tarea
-1.Completar el campo de fecha de nacimiento en el formulario y mostrarlo en la tabla
-2.Agregar en base de datos el campo fechaNac y actualizar el código para guardar y mostrar esta información
-2.Usar SweetAlert2 para mostrar mensajes de confirmación y error
-*/
