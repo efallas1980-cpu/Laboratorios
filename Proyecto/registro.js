@@ -11,12 +11,24 @@ document.getElementById('registroForm').addEventListener('submit', async (e) => 
     const nombre = document.getElementById('nombre').value.trim();
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
+    const passwordConfirm = document.getElementById('passwordConfirm').value.trim(); // <-- Campo de confirmación
 
-    if (!nombre || !email || !password) {
+    if (!nombre || !email || !password || !passwordConfirm) {
         Swal.fire({
             title: 'Campos incompletos',
             text: 'Por favor llena todos los campos.',
             icon: 'warning',
+            confirmButtonColor: '#ff66c4'
+        });
+        return;
+    }
+
+    // Validar si las contraseñas coinciden
+    if (password !== passwordConfirm) {
+        Swal.fire({
+            title: 'Las contraseñas no coinciden',
+            text: 'Por favor verifica que la contraseña y su confirmación sean idénticas.',
+            icon: 'error',
             confirmButtonColor: '#ff66c4'
         });
         return;
@@ -35,20 +47,23 @@ document.getElementById('registroForm').addEventListener('submit', async (e) => 
         const userId = authData.user?.id;
 
         if (userId) {
-            // 2. Insertar el registro en tu tabla pública `usuarios` con el rol de 'cliente'
+            // 2. Insertar el registro incluyendo password_hash para cumplir con la tabla
             const { error: dbError } = await supabase
                 .from('usuarios')
                 .insert([
                     { 
-                        id: userId, // Vinculamos con el ID de Auth
+                        id_usuario: userId, 
                         nombre: nombre,
                         correo: email,
-                        rol: 'cliente' // Rol predeterminado para nuevos registros
+                        password_hash: 'auth_supabase', // Evita errores si la columna es obligatoria
+                        rol: 'cliente' 
                     }
                 ]);
 
             if (dbError) {
-                console.error('Advertencia al guardar perfil en tabla usuarios:', dbError.message);
+                console.error('Error detallado al guardar en tabla usuarios:', dbError.message);
+                alert('Error al guardar perfil: ' + dbError.message);
+                return;
             }
         }
 

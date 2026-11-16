@@ -11,17 +11,16 @@ async function verificarSesionNavbar() {
     // 1. Obtener usuario actual en sesión
     const { data: { user } } = await supabase.auth.getUser();
 
+    // 2. Si hay un usuario logueado, consultamos su perfil y pintamos el menú de usuario
     if (user) {
-        // 2. Buscar el nombre y rol en la tabla public.usuarios
         const { data: perfil } = await supabase
             .from('usuarios')
             .select('nombre, rol')
-            .eq('id', user.id)
-            .single();
+            .eq('id_usuario', user.id)
+            .maybeSingle();
 
-        const nombreUsuario = perfil ? perfil.nombre : 'Mi Cuenta';
+        const nombreUsuario = (perfil && perfil.nombre) ? perfil.nombre : 'Mi Cuenta';
 
-        // 3. Pintar el menú desplegable del usuario autenticado
         navAuthArea.innerHTML = `
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,11 +33,17 @@ async function verificarSesionNavbar() {
             </li>
         `;
 
-        // 4. Asignar evento al botón de cerrar sesión
+        // Asignar evento al botón de cerrar sesión
         document.getElementById('btnCerrarSesion').addEventListener('click', async () => {
             await supabase.auth.signOut();
             window.location.reload(); // Recarga la página para actualizar el menú
         });
+    } else {
+        // 3. Si NO hay sesión, mostramos los enlaces predeterminados
+        navAuthArea.innerHTML = `
+            <li class="nav-item"><a class="nav-link" href="login.html">Iniciar Sesión</a></li>
+            <li class="nav-item"><a class="nav-link" href="registro.html">Registrarse</a></li>
+        `;
     }
 }
 
