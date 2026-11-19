@@ -11,7 +11,7 @@ async function obtenerMensajes() {
     tbody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-muted">Cargando mensajes...</td></tr>`;
 
     try {
-        // Consultamos la tabla ordenados del más reciente al más antiguo
+        // Tabla ordenada del más reciente al más antiguo
         const { data, error } = await supabase
             .from('mensaje_contacto')
             .select('*')
@@ -28,7 +28,7 @@ async function obtenerMensajes() {
         // Limpiamos y rellenamos la tabla con los datos
         tbody.innerHTML = '';
         data.forEach(msg => {
-            // Formatear la fecha forzando la zona horaria de Costa Rica y un formato limpio
+            // Formatear la fecha
             let fechaFormateada = 'Fecha no disponible';
             if (msg.fecha_envio) {
                 const fechaObj = new Date(msg.fecha_envio);
@@ -41,7 +41,7 @@ async function obtenerMensajes() {
                     hour: '2-digit',
                     minute: '2-digit',
                     second: '2-digit',
-                    hour12: false // Formato de 24 horas (puedes cambiarlo a true si prefieres am/pm)
+                    hour12: true // Para mostrar AM/PM
                 };
                 
                 fechaFormateada = new Intl.DateTimeFormat('es-CR', opciones).format(fechaObj);
@@ -65,7 +65,7 @@ async function obtenerMensajes() {
     }
 }
 
-// Función  de seguridad para que se escriba codigo malicioso en la tabla de mensajes
+// Función  de seguridad para que no se escriba codigo malicioso en la tabla de mensajes
 function escapeHtml(text) {
     if (!text) return '';
     return text

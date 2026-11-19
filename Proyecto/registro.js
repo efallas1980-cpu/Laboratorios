@@ -43,11 +43,11 @@ document.getElementById('registroForm').addEventListener('submit', async (e) => 
 
         if (authError) throw authError;
 
-        // Obtenemos el ID único generado por Supabase para este usuario
+        // ID único generado por Supabase para este usuario
         const userId = authData.user?.id;
 
         if (userId) {
-            // 2. Insertar el registro incluyendo password_hash para cumplir con la tabla
+            // 2. Insertar el registro incluyendo password_hash 
             const { error: dbError } = await supabase
                 .from('usuarios')
                 .insert([
