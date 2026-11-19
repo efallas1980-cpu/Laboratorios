@@ -53,10 +53,10 @@ function FormularioEstudiante({
         </div>
 
         <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
-          <button type="submit">
+          <button type="submit" className="btn btn-primary">
             {isEditing ? "Actualizar" : "Agregar"}
           </button>
-          <button type="button" onClick={onCancel}>
+          <button type="button" onClick={onCancel} className="btn btn-danger">
             Cancelar
           </button>
         </div>

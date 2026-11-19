@@ -31,8 +31,10 @@ function TablaEstudiante({ students, handleEdit, handleDelete }) {
                   <td>{student.carrera}</td>
                   <td>{student.fechaNac || ""}</td>
                   <td>
-                    <button onClick={() => handleEdit(student)}>Editar</button>{" "}
-                    <button onClick={() => handleDelete(student.id)}>
+                    <button type="button" className=" btn-primary" onClick={() => handleEdit(student)}>
+                      Editar
+                    </button>{" "}
+                    <button type="button" className=" btn-danger" onClick={() => handleDelete(student.id)}>
                       Eliminar
                     </button>
                   </td>
