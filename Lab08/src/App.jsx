@@ -4,6 +4,7 @@ import {
   guardarEstudiante,
   eliminarEstudiante,
 } from "./estudianteService";
+import TablaEstudiante from "./components/estudiantes/TablaEstudiante";
 
 /*
   ============================================================
@@ -195,7 +196,7 @@ function App() {
 
   return (
     <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "20px" }}>
-      <h1>Laboratorio 7 - React Estudiantes</h1>
+      <h1>Laboratorio 8 - React LMS</h1>
       <p>Introducción a React con separación de responsabilidades.</p>
 
       <hr />
@@ -277,45 +278,10 @@ function App() {
       {loading ? (
         <p>Cargando estudiantes...</p>
       ) : (
-        <table
-          border="1"
-          cellPadding="8"
-          style={{ width: "100%", borderCollapse: "collapse" }}
-        >
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Correo</th>
-              <th>Carrera</th>
-              <th>Fecha Nacimiento</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {students.length === 0 ? (
-              <tr>
-                <td colSpan="6">No hay estudiantes registrados</td>
-              </tr>
-            ) : (
-              students.map((student) => (
-                <tr key={student.id}>
-                  <td>{student.nombre}</td>
-                  <td>{student.apellido}</td>
-                  <td>{student.correo}</td>
-                  <td>{student.carrera}</td>
-                  <td>{student.fechaNac || ""}</td>
-                  <td>
-                    <button onClick={() => handleEdit(student)}>Editar</button>{" "}
-                    <button onClick={() => handleDelete(student.id)}>
-                      Eliminar
-                    </button>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+        <TablaEstudiante 
+        students={students} 
+        handleEdit={handleEdit}
+        handleDelete={handleDelete} />
       )}
     </div>
   );
